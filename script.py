@@ -1,4 +1,3 @@
-# requires pySerial to be installed
 import serial
 import pgdb
 
@@ -11,16 +10,14 @@ maConnection = pgdb.connect( host=adresseServeur, user=utilisateur, password=mot
 doQuery( maConnection )
 maConnection.close()
 
-serial_port = "COM3"
+port_serie = "COM3"
 baud_rate = 9600
-write_to_file_path = "data.txt"
+chemin_fichier = "data.txt"
 
-output_file = open(write_to_file_path, "w+")
-ser = serial.Serial(serial_port, baud_rate)
+fichier_sortie = open(chemin_fichier, "w+")
+serie = serial.Serial(port_serie, baud_rate)
 while True:
-    line = ser.readline()
-    if not (line == ""):
-        print(line.rstrip())
-        output_file.write(line.rstrip()+"\n")
-# Check for a solution to close the file, as it causes problems to write values the second time.
-# Maybe we could check for a buffer, that would swap the writing file each XX seconds/minutes
+    ligne = serie.readline()
+    if not (ligne == ""):
+        print(ligne.rstrip())
+        fichier_sortie.write(ligne.rstrip()+"\n")
