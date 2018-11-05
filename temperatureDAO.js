@@ -1,5 +1,5 @@
 var postgresql = require('pg');
-var chaineDeConnection = 'postgres://postgres:antoine@localhost:5433/projet_integrite';
+var chaineDeConnection = 'postgres://postgres:9182@54.39.144.87:5432/Capture';
 
 const SQL_LISTE_ETUDIANT = 'SELECT * FROM etudiant;';
 /*const SQL_DONNER_ETUDIANT = 'SELECT * FROM etudiant WHERE id=$1;';
