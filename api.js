@@ -8,7 +8,7 @@ var serveur = http.createServer(
 
         if(requete.method === 'GET') {
             if(requete.url === '/temperature/moyenne' || requete.url === '/temperature/moyenne/') {
-                const moyenne = await temperatureDAO.getMoyenne();
+                const moyenne = await temperatureDAO.listerTemperatures();
                 reponse.end(JSON.stringify(moyenne));
             }
         }

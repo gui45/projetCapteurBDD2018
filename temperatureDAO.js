@@ -1,5 +1,5 @@
 var postgresql = require('pg');
-var chaineDeConnexion = 'postgres://postgres:9182@54.39.144.87:5432/Capture';
+var chaineDeConnexion = 'postgres://postgres:9182@54.39.144.87:5432/capture';
 
 const SQL_LISTE_TEMPERATURE = 'SELECT * FROM raw;';
 /*const SQL_DONNER_ETUDIANT = 'SELECT * FROM etudiant WHERE id=$1;';
