@@ -1,25 +1,25 @@
 #include <math.h>
 
-int analogValue;
-float temperature;
 int B;
-float resistance;
+float R0;
 
 void setup()
 {
-  analogValue = 0;
-  temperature = 0.0;
-  B = 3975;
-  resistance = 0.0;
+  B = 4275;
+  R0 = 100000;
   Serial.begin(9600);
 }
 
 void loop()
 {
-  analogValue = analogRead(0);
-  resistance = (float)(1023-analogValue)*10000/analogValue;
-  temperature = 1/(log(resistance/10000)/B+1/298.15)-273.15;
-  delay(250);
+  int analogValue = analogRead(A0);
+  
+  float R = 1023.0/analogValue-1.0;
+  R = R0*R;
+  
+  float temperature = 1.0/(log(R/R0)/B+1/298.15)-273.15;
+
+  delay(100);
   Serial.print(temperature);
   Serial.println("");
 }

@@ -42,11 +42,11 @@ serie = serial.Serial(port_serie, baud_rate)
 
 while True:
     # Lecture de la valeur renvoyee par le port serie du micro controleur
-    ligne = serie.readline().decode("utf-8")
+    ligne = serie.readline().decode("utf-8").rstrip()
     if not (ligne == ""):
-        print(ligne.rstrip())
-        fichier_sortie.write(ligne.rstrip() + "\n")
+        print(ligne)
+        fichier_sortie.write(ligne + "\n")
 
         # Appel de fonction asynchrone
         boucle = asyncio.get_event_loop()
-        boucle.run_until_complete(envoyerValeurEnBDD(ligne.rstrip()))
+        boucle.run_until_complete(envoyerValeurEnBDD(ligne))
