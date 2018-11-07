@@ -3,7 +3,7 @@ var chaineDeConnexion = 'postgres://postgres:9182@54.39.144.87:5432/capture';
 
 const SQL_LISTE_TEMPERATURE = 'SELECT * FROM raw;';
 const SQL_MOYENNE_TEMPERATURE = 'SELECT * FROM view ORDER BY ID DESC LIMIT 1;';
-const SQL_MEDIANE_TEMPERATURE = 'SELECT * FROM raw OFFSET ((SELECT count(*) FROM raw) / 2) LIMIT 1;';
+const SQL_MEDIANE_TEMPERATURE = 'SELECT * FROM raw ORDER BY temp OFFSET ((SELECT count(*) FROM raw) / 2) LIMIT 1;';
 const SQL_MINIMUM_TEMPERATURE = 'SELECT * FROM raw WHERE temp = (SELECT MIN(temp) FROM raw);';
 const SQL_MAXIMUM_TEMPERATURE = 'SELECT * FROM raw WHERE temp = (SELECT MAX(temp) FROM raw);';
 /*const SQL_DONNER_ETUDIANT = 'SELECT * FROM etudiant WHERE id=$1;';
