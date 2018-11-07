@@ -26,6 +26,20 @@ var serveur = http.createServer(
                 reponse.end(JSON.stringify(mediane));
             }
         }
+
+        if(requete.method === 'GET') {
+            if(requete.url === '/temperature/minimum' || requete.url === '/temperature/minimum/') {
+                const minimum = await temperatureDAO.minimumTemperature();
+                reponse.end(JSON.stringify(minimum));
+            }
+        }
+
+        if(requete.method === 'GET') {
+            if(requete.url === '/temperature/maximum' || requete.url === '/temperature/maximum/') {
+                const maximum = await temperatureDAO.maximumTemperature();
+                reponse.end(JSON.stringify(maximum));
+            }
+        }
     }
     
 );
