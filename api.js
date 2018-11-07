@@ -12,6 +12,16 @@ var serveur = http.createServer(
                 reponse.end(JSON.stringify(temperature));
             }
         }
+
+        if(requete.method === 'GET') {
+            if(requete.url === '/temperature/moyenne' || requete.url === '/temperature/moyenne/') {
+                const moyenne = await temperatureDAO.moyenneTemperature();
+                reponse.end(JSON.stringify(moyenne));
+            }
+        }
+
+
     }
+    
 );
 serveur.listen(8080);
