@@ -20,7 +20,12 @@ var serveur = http.createServer(
             }
         }
 
-
+        if(requete.method === 'GET') {
+            if(requete.url === '/temperature/mediane' || requete.url === '/temperature/mediane/') {
+                const mediane = await temperatureDAO.medianeTemperature();
+                reponse.end(JSON.stringify(mediane));
+            }
+        }
     }
     
 );
