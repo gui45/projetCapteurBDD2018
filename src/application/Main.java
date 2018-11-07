@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../Vue/sample.fxml"));
         primaryStage.setTitle("Dashboard");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 800, 800));
         primaryStage.show();
     }
 
@@ -20,4 +20,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+
+
 }
