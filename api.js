@@ -40,6 +40,13 @@ var serveur = http.createServer(
                 reponse.end(JSON.stringify(maximum));
             }
         }
+
+        if(requete.method === 'GET') {
+            if(requete.url === '/temperature/mode' || requete.url === '/temperature/mode/') {
+                const mode = await temperatureDAO.modeTemperature();
+                reponse.end(JSON.stringify(mode));
+            }
+        }
     }
     
 );

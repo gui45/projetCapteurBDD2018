@@ -6,6 +6,7 @@ const SQL_MOYENNE_TEMPERATURE = 'SELECT * FROM view ORDER BY ID DESC LIMIT 1;';
 const SQL_MEDIANE_TEMPERATURE = 'SELECT * FROM raw ORDER BY temp OFFSET ((SELECT count(*) FROM raw) / 2) LIMIT 1;';
 const SQL_MINIMUM_TEMPERATURE = 'SELECT * FROM raw WHERE temp = (SELECT MIN(temp) FROM raw);';
 const SQL_MAXIMUM_TEMPERATURE = 'SELECT * FROM raw WHERE temp = (SELECT MAX(temp) FROM raw);';
+const SQL_MODE_TEMPERATURE = "SELECT COUNT(*) as compte, temp FROM raw GROUP BY raw.temp ORDER BY compte DESC LIMIT 1;";
 /*const SQL_DONNER_ETUDIANT = 'SELECT * FROM etudiant WHERE id=$1;';
 const SQL_AJOUTER_ETUDIANT = 'INSERT INTO etudiant VALUES(DEFAULT, $1, $2, $3, $4, $5);';
 const SQL_SUPPRIMER_ETUDIANT = 'DELETE FROM etudiant WHERE id=$1;'
@@ -61,6 +62,16 @@ exports.maximumTemperature = async function maximumTemperature(){
     await basededonnees.end();
 
     return maxTemp.rows;
+};
+exports.modeTemperature = async function modeTemperature(){
+    const basededonnees = new postgresql.Client(chaineDeConnexion);
+
+    await basededonnees.connect();
+    var modTemp = await basededonnees.query(SQL_MODE_TEMPERATURE);
+    await basededonnees.end();
+
+    return modTemp.rows;
+
 };
 
 
