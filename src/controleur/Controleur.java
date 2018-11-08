@@ -50,9 +50,6 @@ public class Controleur {
     @FXML
     private RadioButton intakesChoice;
 
-    @FXML
-    private Button buttonUpdate;
-
     private boolean boolHour;
     private boolean boolExit = false;
     private int hours;
@@ -68,7 +65,16 @@ public class Controleur {
         initSelectedChoice();
 
         if (areValuesCorrect()) {
-            // TODO: Call API
+            // TODO: Call API, receive data, create Dashboard constructor and set Values to Text
+
+            if(boolHour){
+                lastHours.setText("" + hours);
+                lastIntakes.setText("XXX");
+            }
+            else {
+                lastHours.setText("XXX");
+                lastIntakes.setText("" + intakes);
+            }
 
             //TEST:
             System.out.println(intakes + " | " + hours + " | " + limitOver + " | " + limitUnder);

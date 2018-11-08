@@ -151,12 +151,12 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Text fx:id="lastHours" fill="#bf378d" layoutX="83.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="146.720703125">
+      <Text fx:id="lastHours" fill="#bf378d" layoutX="83.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="146.720703125">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <Text fx:id="lastIntakes" fill="#bf378d" layoutX="83.0" layoutY="657.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="146.720703125">
+      <Text fx:id="lastIntakes" fill="#bf378d" layoutX="83.0" layoutY="657.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="146.720703125">
          <font>
             <Font size="30.0" />
          </font>
