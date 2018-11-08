@@ -1,11 +1,11 @@
-CREATE OR REPLACE FUNCTION sauvegarde_temp_view()
-RETURNS trigger AS 
-$BODY$
+CREATE OR REPLACE FUNCTION public.sauvegarde_temp_view()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
 BEGIN
-IF (new.id % 100) = 0 THEN 
-INSERT INTO public.view (moyenne_temp) VALUES (((SELECT SUM(temp) FROM public.raw WHERE id >= (new.id - 100))/100));
+IF (new.id % 40) = 0 THEN 
+INSERT INTO public.view (moyenne_temp, timestamp) VALUES ((SELECT AVG(temp) FROM public.raw WHERE id >= (new.id - 39)), current_timestamp);
 END IF;																						
 return new;																					
 END
-$BODY$
-LANGUAGE plpgsql;
+$function$
