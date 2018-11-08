@@ -31,26 +31,22 @@ public class RecevoirMoyenneTemp extends AsyncTask<String, String, String> {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("http://10.0.2.2:8080/temperature/moyenne/")
+                .url("http://54.39.144.87:9080/temperature/moyenne")
                 .build();
-
-        Log.d("LOGTEST","0");
 
         try
         {
-            Log.d("LOGTEST","1");
             reponse = client.newCall(request).execute();
 
             if (!reponse.isSuccessful())
                 throw new IOException("Code non attendu : " + reponse.toString());
 
-            Log.d("LOGTEST","2");
 
             String jsonDonneesString = reponse.body().string();
             JSONArray jsonArray = new JSONArray(jsonDonneesString);
 
-            JSONObject jsonObject = jsonArray.getJSONObject(1);
-            String temperatureString = jsonObject.getString("temp");
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            String temperatureString = jsonObject.getString("moyenne_temp");
             String date = jsonObject.getString("timestamp");
 
             this.temperature = new Temperature(temperatureString, date);
@@ -60,7 +56,6 @@ public class RecevoirMoyenneTemp extends AsyncTask<String, String, String> {
         } catch(Exception e)
         {
             e.printStackTrace();
-            Log.d("LOGTEST","NON");
         }
 
         return null;
