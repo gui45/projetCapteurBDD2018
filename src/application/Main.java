@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../Vue/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Vue/dashboard.fxml"));
         primaryStage.setTitle("Dashboard");
         primaryStage.setScene(new Scene(root, 800, 800));
         primaryStage.show();

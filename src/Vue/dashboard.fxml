@@ -151,10 +151,15 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Button fx:id="buttonUpdate" layoutX="519.0" layoutY="669.0" mnemonicParsing="false" onAction="#update" text="Update">
+      <Button fx:id="buttonUpdate" layoutX="496.0" layoutY="601.0" mnemonicParsing="false" onAction="#update" text="Update">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
+      <Text fx:id="erreur" fill="RED" layoutX="450.0" layoutY="727.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erreur de syntaxe" visible="false">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
