@@ -31,7 +31,7 @@ public class RecevoirMoyenneTemp extends AsyncTask<String, String, String> {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("http://54.39.144.87:9080/temperature/moyenne")
+                .url("http://54.39.144.87:8080/temperature/moyenne")
                 .build();
 
         try

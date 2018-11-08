@@ -21,26 +21,34 @@ public class VuePrincipale extends AppCompatActivity {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                RecevoirMoyenneTemp recevoirMoyenneTemp = new RecevoirMoyenneTemp();
-                try {
-                    recevoirMoyenneTemp.execute().get();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
 
-                Temperature temperature = recevoirMoyenneTemp.getTemperature();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        RecevoirMoyenneTemp recevoirMoyenneTemp = new RecevoirMoyenneTemp();
+                        try {
+                            recevoirMoyenneTemp.execute().get();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
-                TextView dateTV = (TextView)findViewById(R.id.date);
-                dateTV.setText(temperature.getDate());
+                        Temperature temperature = recevoirMoyenneTemp.getTemperature();
 
-                TextView temperatureTV = (TextView)findViewById(R.id.temperature);
-                temperatureTV.setText(temperature.getTemperature());
+                        TextView dateTV = (TextView)findViewById(R.id.date);
+                        dateTV.setText(temperature.getDate());
+
+                        TextView temperatureTV = (TextView)findViewById(R.id.temperature);
+                        temperatureTV.setText(temperature.getTemperature());
+                    }
+                });
+
+
             }
         };
 
-        timer.scheduleAtFixedRate(timerTask,0,10000);
+        timer.scheduleAtFixedRate(timerTask,0,1000);
 
 
 
