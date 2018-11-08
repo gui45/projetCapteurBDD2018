@@ -64,12 +64,12 @@ public class Controleur {
 
         initValueUpdate();
         initSelectedChoice();
-        
+
         if (areValuesCorrect()) {
             // TODO: Call API
 
             //TEST:
-            System.out.println(intakes + " - " + hours + " - " + limitOver + " - " + limitUnder);
+            System.out.println(intakes + " | " + hours + " | " + limitOver + " | " + limitUnder);
         }
         else{
             erreur.setVisible(true);
@@ -79,8 +79,8 @@ public class Controleur {
     private void initValueUpdate(){
         limitOver = 0.0;
         limitUnder = 0.0;
-        hours = 0;
-        intakes = 0;
+        hours = -1;
+        intakes = -1;
         boolExit = false;
         erreur.setVisible(false);
     }
