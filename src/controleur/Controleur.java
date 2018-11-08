@@ -21,7 +21,7 @@ public class Controleur {
     private Text mode;
 
     @FXML
-    private Text mediane;
+    private Text median;
 
     @FXML
     private Text lastHours;
@@ -55,8 +55,10 @@ public class Controleur {
 
     private boolean boolHour;
     private boolean boolExit = false;
-    private int hours, intakes;
-    private double limitOver, limitUnder;
+    private int hours;
+    private int intakes;
+    private double limitOver;
+    private double limitUnder;
 
 
     @FXML
