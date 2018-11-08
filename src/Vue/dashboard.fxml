@@ -41,23 +41,12 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Separator layoutX="373.0" layoutY="100.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="19.0" />
-      <Text fill="#bf378d" layoutX="400.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intakes :">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-      <Text fill="#bf378d" layoutX="400.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Over :">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-      <Text fill="#bf378d" layoutX="400.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Under :">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
       <Text fill="#bf378d" layoutX="13.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="254.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hours">
          <font>
             <Font size="30.0" />
          </font>
@@ -72,26 +61,32 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Text fill="#bf378d" layoutX="254.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hours">
+      <Text fill="#bf378d" layoutX="400.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours :">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <RadioButton fx:id="hoursChoice" layoutX="392.0" layoutY="529.0" mnemonicParsing="false" selected="true" text="Hours" textFill="#bf378d">
+      <Text fill="#bf378d" layoutX="400.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intakes :">
          <font>
             <Font size="30.0" />
          </font>
-         <toggleGroup>
-            <ToggleGroup fx:id="group" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="intakesChoice" layoutX="588.0" layoutY="529.0" mnemonicParsing="false" text="Intakes" textFill="#bf378d" toggleGroup="$group">
+      </Text>
+      <Text fill="#bf378d" layoutX="400.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Over :">
          <font>
             <Font size="30.0" />
          </font>
-      </RadioButton>
-      <Separator layoutX="394.0" layoutY="-306.0" orientation="VERTICAL" prefHeight="813.0" prefWidth="12.0" rotate="90.0" />
-      <TextField fx:id="nbIntakes" layoutX="532.0" layoutY="118.0" promptText="number of intakes">
+      </Text>
+      <Text fill="#bf378d" layoutX="400.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Under :">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <TextField fx:id="nbHours" layoutX="532.0" layoutY="118.0" promptText="number of hours">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="nbIntakes" layoutX="532.0" layoutY="205.0" promptText="number of intakes">
          <font>
             <Font size="18.0" />
          </font>
@@ -106,6 +101,31 @@
             <Font size="18.0" />
          </font>
       </TextField>
+      <RadioButton fx:id="hoursChoice" layoutX="392.0" layoutY="529.0" mnemonicParsing="false" selected="true" text="Hours" textFill="#bf378d">
+         <toggleGroup>
+            <ToggleGroup fx:id="group" />
+         </toggleGroup>
+         <font>
+            <Font size="30.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="intakesChoice" layoutX="588.0" layoutY="529.0" mnemonicParsing="false" text="Intakes" textFill="#bf378d" toggleGroup="$group">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </RadioButton>
+      <Button fx:id="buttonUpdate" layoutX="496.0" layoutY="601.0" mnemonicParsing="false" onAction="#update" text="Update">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Text fx:id="erreur" fill="RED" layoutX="450.0" layoutY="727.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erreur de syntaxe" visible="false">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Separator layoutX="373.0" layoutY="100.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="19.0" />
+      <Separator layoutX="394.0" layoutY="-306.0" orientation="VERTICAL" prefHeight="813.0" prefWidth="12.0" rotate="90.0" />
       <Text fx:id="min" fill="#bf378d" layoutX="106.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="251.8271484375">
          <font>
             <Font size="30.0" />
@@ -137,26 +157,6 @@
          </font>
       </Text>
       <Text fx:id="lastIntakes" fill="#bf378d" layoutX="83.0" layoutY="657.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="146.720703125">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-      <TextField fx:id="nbHours" layoutX="532.0" layoutY="203.0" promptText="number of hours">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Text fill="#bf378d" layoutX="400.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours :">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-      <Button fx:id="buttonUpdate" layoutX="496.0" layoutY="601.0" mnemonicParsing="false" onAction="#update" text="Update">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Button>
-      <Text fx:id="erreur" fill="RED" layoutX="450.0" layoutY="727.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erreur de syntaxe" visible="false">
          <font>
             <Font size="30.0" />
          </font>
