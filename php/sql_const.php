@@ -1,5 +1,6 @@
 <?php
-    // changer le * pour une valeur prise en BDD (param_temp)
+    const SQL_PARAMETRES = "SELECT * FROM public.params ORDER BY id DESC LIMIT 1;";
+
     const SQL_VALEUR_MIN = "SELECT MIN(temp) AS minimum from raw;";
     const SQL_VALEUR_MAX = "SELECT MAX(temp) AS maximum from raw;";
     const SQL_VALEUR_MOYENNE = "SELECT AVG(temp) AS moyenne from raw;";
