@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import model.Dashboard;
 
 public class Controleur {
 
@@ -67,6 +68,8 @@ public class Controleur {
         if (areValuesCorrect()) {
             // TODO: Call API, receive data, create Dashboard constructor and set Values to Text
 
+
+
             if(boolHour){
                 lastHours.setText("" + hours);
                 lastIntakes.setText("XXX");
@@ -85,10 +88,10 @@ public class Controleur {
     }
 
     private void initValueUpdate(){
-        limitOver = 0.0;
-        limitUnder = 0.0;
-        hours = -1;
-        intakes = -1;
+        limitOver = 125.0;
+        limitUnder = -40.0;
+        hours = 1;
+        intakes = 1000;
         boolExit = false;
         erreur.setVisible(false);
     }
@@ -110,26 +113,24 @@ public class Controleur {
             String tempLimitUnder = under.getText();
 
             if (tempLimitOver.equals("")) {
-                limitOver = 0;
+                limitOver = 125.0;
             } else {
                 limitOver = Double.parseDouble(tempLimitOver);
             }
 
             if (tempLimitUnder.equals("")) {
-                limitUnder = 0;
+                limitUnder = -40.0;
             } else {
                 limitUnder = Double.parseDouble(tempLimitUnder);
             }
 
             if (boolHour) {
                 if (tempHours.equals("")) {
-                    boolExit = true;
                 } else {
                     hours = Integer.parseInt(tempHours);
                 }
             } else {
                 if (tempIntakes.equals("")) {
-                    boolExit = true;
                 } else {
                     intakes = Integer.parseInt(tempIntakes);
                 }
