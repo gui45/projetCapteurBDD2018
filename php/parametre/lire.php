@@ -11,16 +11,16 @@
 ?>
 
 <parametres>
-    <hours>
-        <?=$valeur->hours?>
-    </hours>
-    <intakes>
-        <?=$valeur->intakes?>
-    </intakes>
-    <over>
-        <?=$valeur->over?>
-    </over>
-    <under>
-        <?=$valeur->under?>
-    </under> 
+    <nbHeure>
+        <?=$valeur->nbHeure?>
+    </nbHeure>
+    <nbElement>
+        <?=$valeur->nbElement?>
+    </nbElement>
+    <minParam>
+        <?=$valeur->minParam?>
+    </minParam>
+    <maxParam>
+        <?=$valeur->maxParam?>
+    </maxParam> 
 </parametres>

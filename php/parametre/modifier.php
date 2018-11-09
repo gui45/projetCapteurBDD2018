@@ -5,10 +5,6 @@
     if (isset($_PATCH['maxParam']) && isset($_PATCH['minParam'])) {
         $minParam = $_PATCH['minParam'];
         $maxParam = $_PATCH['maxParam'];
-        echo($minParam);
-        echo($maxParam);
-        var_dump($minParam);
-        var_dump($maxParam);
 
         if (isset($_PATCH['nbElement'])) {
             $element = $_PATCH['nbElement'];
