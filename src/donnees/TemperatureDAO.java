@@ -28,7 +28,7 @@ public class TemperatureDAO {
 		
 	}
 	
-	public List<Temperature> rechercherTemperature(){
+	public Temperature rechercherTemperature(){
 		try
 		{
 			URL urlListeVaisseau = new URL("URL A METTRE");
@@ -75,9 +75,9 @@ public class TemperatureDAO {
 				*/
 				//Vaisseau vaisseau = new Vaisseau();
 
-				listeTemperature.add(temperature);
-				
+				return temperature;
 			}
+
 	}catch (ParserConfigurationException e) 
 		{	
 		e.printStackTrace();
@@ -89,7 +89,6 @@ public class TemperatureDAO {
 		e.printStackTrace();
 	}
 		
-	return listeTemperature;
-
+		return null;
 }
 }
