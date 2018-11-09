@@ -1,0 +1,12 @@
+hours ou intakes
+
+toujours : over / under -> temp en °C
+
+
+retour :
+
+min
+max
+moy
+mode
+mediane
