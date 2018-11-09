@@ -2,20 +2,20 @@
     include "../connexion.php";
     include "../sql_const.php";
     
-    if (isset($_PATCH['maxParam']) && isset($_PATCH['minParam'])) {
-        $minParam = $_PATCH['minParam'];
-        $maxParam = $_PATCH['maxParam'];
+    if (isset($_POST['maxParam']) && isset($_POST['minParam'])) {
+        $minParam = $_POST['minParam'];
+        $maxParam = $_POST['maxParam'];
 
-        if (isset($_PATCH['nbElement'])) {
-            $element = $_PATCH['nbElement'];
+        if (isset($_POST['nbElement'])) {
+            $element = $_POST['nbElement'];
 
             $requete = $basededonnees->prepare(SQL_MODIFIER_PARAMS_ELEMENT);
             $requete->bindParam(":nbElement", $element);
             $requete->bindParam(":minParam", $minParam);
             $requete->bindParam(":maxParam", $maxParam);
         }
-        else if (isset($_PATCH['nbHeure'])) {
-            $nbHeure = $_PATCH['nbHeure'];
+        else if (isset($_POST['nbHeure'])) {
+            $nbHeure = $_POST['nbHeure'];
 
             $requete = $basededonnees->prepare(SQL_MODIFIER_PARAMS_HEURE);
             $requete->bindParam(":nbHeure", $nbHeure);
