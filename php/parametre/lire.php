@@ -5,9 +5,9 @@
     include "../connexion.php";
     include "../sql_const.php";
 
-	$requeteValeurMaximum = $basededonnees->prepare(SQL_PARAMETRES);
-	$requeteValeurMaximum->execute();
-    $valeur = $requeteValeurMaximum->fetch(PDO::FETCH_OBJ);
+	$requete = $basededonnees->prepare(SQL_PARAMETRES);
+	$requete->execute();
+    $valeur = $requete->fetch(PDO::FETCH_OBJ);
 ?>
 
 <parametres>
