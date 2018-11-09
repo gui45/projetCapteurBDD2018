@@ -1,6 +1,6 @@
 package model;
 
-public class Dashboard {
+public class TableauDeBord {
 
     private double min;
     private double max;
@@ -10,7 +10,7 @@ public class Dashboard {
     private double heure;
     private double sauvegarde;
 
-    public Dashboard(double min, double max, double moyenne, double mode, double mediane, double heure, double sauvegarde){
+    public TableauDeBord(double min, double max, double moyenne, double mode, double mediane, double heure, double sauvegarde){
         this.min=min;
         this.max=max;
         this.moyenne = moyenne;

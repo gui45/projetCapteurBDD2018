@@ -31,7 +31,7 @@ public class TemperatureDAO {
 	public Temperature rechercherTemperature(){
 		try
 		{
-			URL urlListeVaisseau = new URL("URL A METTRE");
+			URL urlListeVaisseau = new URL("http://127.0.0.1/phpBDD/temperature/lire_statistiques.php");
 			String derniereBalise = "</temperature>";
 			InputStream flux = urlListeVaisseau.openConnection().getInputStream();
 			Scanner lecteur = new Scanner(flux);
@@ -66,15 +66,7 @@ public class TemperatureDAO {
 				String mediane = noeudTemperature.getElementsByTagName("mediane").item(0).getTextContent();
 				temperature.setMediane(Float.valueOf(mediane));
 
-
-				//System.out.println("ID : " + id);
-				/*System.out.println("nom : " + nomModele);
-				System.out.println("kilometrage : " + kilometrage);
-				System.out.println("nombreDePlace : " + nombreDePlace);
-				System.out.println("vitesse : " + vitesse);
-				*/
-				//Vaisseau vaisseau = new Vaisseau();
-
+				System.out.println(temperature.getMaximum());
 				return temperature;
 			}
 

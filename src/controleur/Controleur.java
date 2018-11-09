@@ -1,11 +1,18 @@
 package controleur;
 
+import donnees.TemperatureDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import model.Temperature;
 
 public class Controleur {
+	protected TemperatureDAO temperatureDAO;
+
+	public Controleur() {
+		temperatureDAO = new TemperatureDAO();
+	}
 
     @FXML
     private Text min;
@@ -62,7 +69,15 @@ public class Controleur {
 
         initValeur();
         initChoixSelect();
+        Temperature temperature = temperatureDAO.rechercherTemperature();
 
+        moyenne.setText("" + temperature.getMoyenne());
+        mode.setText("" + temperature.getMode());
+        min.setText("" + temperature.getMinimum());
+        max.setText("" + temperature.getMaximum());
+        mediane.setText("" + temperature.getMediane());
+        
+        
         if (estValeursCorrect()) {
             // TODO: Call API, receive data, create TableauDeBord constructor and set Values to Text
 
