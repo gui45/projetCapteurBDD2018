@@ -1,11 +1,9 @@
 package controleur;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import model.Dashboard;
 
 public class Controleur {
 
@@ -16,131 +14,131 @@ public class Controleur {
     private Text max;
 
     @FXML
-    private Text average;
+    private Text moyenne;
 
     @FXML
     private Text mode;
 
     @FXML
-    private Text median;
+    private Text mediane;
 
     @FXML
-    private Text lastHours;
+    private Text derniereHeure;
 
     @FXML
-    private Text lastIntakes;
+    private Text dernierElement;
 
     @FXML
     private Text erreur;
 
     @FXML
-    private TextField nbIntakes;
+    private TextField nbElement;
 
     @FXML
-    private TextField nbHours;
+    private TextField nbHeure;
 
     @FXML
-    private TextField over;
+    private TextField minParam;
 
     @FXML
-    private TextField under;
+    private TextField maxParam;
 
     @FXML
-    private RadioButton hoursChoice;
+    private RadioButton heureChoix;
 
     @FXML
-    private RadioButton intakesChoice;
+    private RadioButton elementChoix;
 
-    private boolean boolHour;
-    private boolean boolExit = false;
-    private int hours;
-    private int intakes;
-    private double limitOver;
-    private double limitUnder;
+    private boolean boolHeure;
+    private boolean boolQuitter = false;
+    private int heure;
+    private int element;
+    private double limitMin;
+    private double limitMax;
 
 
     @FXML
-    private void update() {
+    private void actualiser() {
 
-        initValueUpdate();
-        initSelectedChoice();
+        initValeur();
+        initChoixSelect();
 
-        if (areValuesCorrect()) {
-            // TODO: Call API, receive data, create Dashboard constructor and set Values to Text
+        if (estValeursCorrect()) {
+            // TODO: Call API, receive data, create TableauDeBord constructor and set Values to Text
 
 
 
-            if(boolHour){
-                lastHours.setText("" + hours);
-                lastIntakes.setText("XXX");
+            if(boolHeure){
+                derniereHeure.setText("" + heure);
+                dernierElement.setText("XXX");
             }
             else {
-                lastHours.setText("XXX");
-                lastIntakes.setText("" + intakes);
+                derniereHeure.setText("XXX");
+                dernierElement.setText("" + element);
             }
 
             //TEST:
-            System.out.println(intakes + " | " + hours + " | " + limitOver + " | " + limitUnder);
+            System.out.println(element + " | " + heure + " | " + limitMin + " | " + limitMax);
         }
         else{
             erreur.setVisible(true);
         }
     }
 
-    private void initValueUpdate(){
-        limitOver = 125.0;
-        limitUnder = -40.0;
-        hours = 1;
-        intakes = 1000;
-        boolExit = false;
+    private void initValeur(){
+        limitMin = 125.0;
+        limitMax = -40.0;
+        heure = 1;
+        element = 1000;
+        boolQuitter = false;
         erreur.setVisible(false);
     }
 
-    private void initSelectedChoice(){
-        if (hoursChoice.isSelected()) {
-            boolHour = true;
+    private void initChoixSelect(){
+        if (heureChoix.isSelected()) {
+            boolHeure = true;
         } else {
-            boolHour = false;
+            boolHeure = false;
         }
     }
 
-    private boolean areValuesCorrect(){
+    private boolean estValeursCorrect(){
         try {
 
-            String tempIntakes = nbIntakes.getText();
-            String tempHours = nbHours.getText();
-            String tempLimitOver = over.getText();
-            String tempLimitUnder = under.getText();
+            String tempElement = nbElement.getText();
+            String tempHeure = nbHeure.getText();
+            String tempLimiteMin = minParam.getText();
+            String tempLimiteMax = maxParam.getText();
 
-            if (tempLimitOver.equals("")) {
-                limitOver = 125.0;
+            if (tempLimiteMin.equals("")) {
+                limitMin = 125.0;
             } else {
-                limitOver = Double.parseDouble(tempLimitOver);
+                limitMin = Double.parseDouble(tempLimiteMin);
             }
 
-            if (tempLimitUnder.equals("")) {
-                limitUnder = -40.0;
+            if (tempLimiteMax.equals("")) {
+                limitMax = -40.0;
             } else {
-                limitUnder = Double.parseDouble(tempLimitUnder);
+                limitMax = Double.parseDouble(tempLimiteMax);
             }
 
-            if (boolHour) {
-                if (tempHours.equals("")) {
+            if (boolHeure) {
+                if (tempHeure.equals("")) {
                 } else {
-                    hours = Integer.parseInt(tempHours);
+                    heure = Integer.parseInt(tempHeure);
                 }
             } else {
-                if (tempIntakes.equals("")) {
+                if (tempElement.equals("")) {
                 } else {
-                    intakes = Integer.parseInt(tempIntakes);
+                    element = Integer.parseInt(tempElement);
                 }
             }
         } catch (NumberFormatException numberFormatException) {
-            boolExit = true;
+            boolQuitter = true;
         } catch (Exception exception) {
             exception.printStackTrace();
         }
 
-        return !boolExit;
+        return !boolQuitter;
     }
 }
