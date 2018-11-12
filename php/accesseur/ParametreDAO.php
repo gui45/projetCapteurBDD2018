@@ -1,8 +1,9 @@
 <?php
 
-include_once "connexion.php"
+include_once "connexion.php";
 
-class ParametreDAO{
+class ParametreDAO
+{
 
     function listerParametres(){
         global $basededonnees;

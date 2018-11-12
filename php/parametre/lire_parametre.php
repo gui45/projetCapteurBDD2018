@@ -4,7 +4,7 @@
 
     $parametreDAO = new ParametreDAO();
 
-    $listeParametres = $parametreDAO.listerParametres();
+    $listeParametres = $parametreDAO->listerParametres();
 
     header('Content-Type: application/xml');
 	echo '<?xml version="1.0" encoding="UTF-8"?>';
@@ -15,18 +15,10 @@
     {
 ?>
     <parametre>
-        <nbHeure>
-            <?=$parametre->heures?>
-        </nbHeure>
-        <nbElement>
-            <?=$parametre->quantite_entree?>
-        </nbElement>
-        <minParam>
-            <?=$parametre->superieur_a?>
-        </minParam>
-        <maxParam>
-            <?=$parametre->inferieur_a?>
-        </maxParam> 
+        <heures><?=$parametre->heures?></heures>
+        <quantite_entree><?=$parametre->quantite_entree?></quantite_entree>
+        <superieur_a><?=$parametre->superieur_a?></superieur_a>
+        <inferieur_a><?=$parametre->inferieur_a?></inferieur_a> 
     </parametre>
     <?php
     }
