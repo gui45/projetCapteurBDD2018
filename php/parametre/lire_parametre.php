@@ -16,16 +16,16 @@
 ?>
     <parametre>
         <nbHeure>
-            <?=$parametre->nbHeure?>
+            <?=$parametre->heures?>
         </nbHeure>
         <nbElement>
-            <?=$parametre->nbElement?>
+            <?=$parametre->quantite_entree?>
         </nbElement>
         <minParam>
-            <?=$parametre->minParam?>
+            <?=$parametre->superieur_a?>
         </minParam>
         <maxParam>
-            <?=$parametre->maxParam?>
+            <?=$parametre->inferieur_a?>
         </maxParam> 
     </parametre>
     <?php
