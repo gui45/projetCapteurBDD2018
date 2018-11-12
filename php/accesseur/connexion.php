@@ -1,5 +1,5 @@
 <?php
-    $hostname = "54.39.144.87";
+    $hostname = "localhost";
     $databaseName = "capture";
     $port = "5432";
     
