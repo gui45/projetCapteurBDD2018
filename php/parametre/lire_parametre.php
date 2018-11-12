@@ -20,7 +20,7 @@
         <superieur_a><?=$parametre->superieur_a?></superieur_a>
         <inferieur_a><?=$parametre->inferieur_a?></inferieur_a> 
     </parametre>
-    <?php
+<?php
     }
-    ?>
+?>
 </parametres>
