@@ -11,7 +11,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.Controleur">
    <children>
-      <Text fill="#bf378d" layoutX="181.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TABLEAU DE BORD">
+      <Text fill="#bf378d" layoutX="46.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TABLEAU DE BORD">
          <font>
             <Font size="50.0" />
          </font>
@@ -114,7 +114,7 @@
             <Font size="30.0" />
          </font>
       </RadioButton>
-      <Button layoutX="496.0" layoutY="601.0" mnemonicParsing="false" onAction="#actualiser" text="Actualiser">
+      <Button layoutX="540.0" layoutY="16.0" mnemonicParsing="false" onAction="#actualiser" text="Actualiser">
          <font>
             <Font size="30.0" />
          </font>
@@ -161,5 +161,10 @@
             <Font size="30.0" />
          </font>
       </Text>
+      <Button layoutX="504.0" layoutY="612.0" mnemonicParsing="false" onAction="#modifier" text="Modifier">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
