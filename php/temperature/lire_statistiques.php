@@ -10,6 +10,7 @@
     echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
 
+<temperatures>
 <?php
     foreach($listeStats as $stats)
     {
@@ -21,7 +22,7 @@
             <mode><?=$stats->mode?></mode>
             <mediane><?=$stats->mediane?></mediane>
         </temperature>
-
 <?php
     }
 ?>
+</temperatures>
