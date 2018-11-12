@@ -26,6 +26,12 @@ public class ParametreDAO {
 	public ParametreDAO() {
 		
 	}
+
+	public void modifierParametre(int heure, int element, double limitMin, double limitMax, boolean boolHeure){
+
+		// TODO : POST XML POUR API
+
+	}
 	
 	public Parametre rechercherParametre(){
 		try

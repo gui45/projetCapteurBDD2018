@@ -80,9 +80,7 @@ public class Controleur {
     private void modifier(){
         ParametreDAO parametreDAO = new ParametreDAO();
 
-        // TODO : gets
-
-        parametreDAO.modifierParametre();
+        parametreDAO.modifierParametre(heure, element, limitMin, limitMax, boolHeure);
     }
 
     @FXML
