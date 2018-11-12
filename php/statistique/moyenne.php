@@ -1,17 +1,19 @@
 <?php
-	header('Content-Type: application/xml');
-	echo '<?xml version="1.0" encoding="UTF-8"?>';
+    include "../accesseur/StatistiqueDAO.php";
 
-    include "../connexion.php";
-    include "../sql_const.php";
+    $statistiqueDAO = new StatistiqueDAO();
 
-	$requeteValeurMoyenne = $basededonnees->prepare(SQL_VALEUR_MOYENNE);
-	$requeteValeurMoyenne->execute();
-    $valeur = $requeteValeurMoyenne->fetch(PDO::FETCH_OBJ);
+    $listeStats = $statistiqueDAO->lireTemperatureMoyenne();
+
+    header('Content-Type: application/xml');
+    echo '<?xml version="1.0" encoding="UTF-8"?>';
+
+    foreach($listeStats as $stats)
+    {
 ?>
-
-<temperature>
-    <moyenne>
-        <?=$valeur->moyenne?>
-    </moyenne>
-</temperature>
+    <temperature>
+        <moyenne><?=$stats->moyenne?></moyenne>
+    </temperature>
+<?php
+    }
+?>

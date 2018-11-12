@@ -1,17 +1,19 @@
 <?php
-	header('Content-Type: application/xml');
-	echo '<?xml version="1.0" encoding="UTF-8"?>';
+    include "../accesseur/StatistiqueDAO.php";
 
-    include "../connexion.php";
-    include "../sql_const.php";
+    $statistiqueDAO = new StatistiqueDAO();
 
-	$requeteValeurMediane = $basededonnees->prepare(SQL_VALEUR_MEDIANE);
-	$requeteValeurMediane->execute();
-    $valeur = $requeteValeurMediane->fetch(PDO::FETCH_OBJ);
+    $listeStats = $statistiqueDAO->lireTemperatureMediane();
+
+    header('Content-Type: application/xml');
+    echo '<?xml version="1.0" encoding="UTF-8"?>';
+
+    foreach($listeStats as $stats)
+    {
 ?>
-
-<temperature>
-    <mediane>
-        <?=$valeur->temp?>
-    </mediane>
-</temperature>
+    <temperature>
+        <mediane><?=$stats->mediane?></mediane>
+    </temperature>
+<?php
+    }
+?>
