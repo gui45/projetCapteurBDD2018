@@ -7,7 +7,7 @@ var serveur = http.createServer(
     async function(requete, reponse) {
 
         if(requete.method === 'GET') {
-            if(requete.url === '/temperature/liste-temperature' || requete.url === '/temperature/liste-temperature/') {
+            if(requete.url === '/temperature/liste' || requete.url === '/temperature/liste/') {
                 const temperature = await temperatureDAO.listerTemperatures();
                 reponse.end(JSON.stringify(temperature));
             }

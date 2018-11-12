@@ -1,12 +1,12 @@
 var postgresql = require('pg');
 var chaineDeConnexion = 'postgres://postgres:9182@54.39.144.87:5432/capture';
 
-const SQL_LISTE_TEMPERATURE = 'SELECT * FROM raw;';
-const SQL_MOYENNE_TEMPERATURE = 'SELECT * FROM view ORDER BY ID DESC LIMIT 1;';
-const SQL_MEDIANE_TEMPERATURE = 'SELECT * FROM raw ORDER BY temp OFFSET ((SELECT count(*) FROM raw) / 2) LIMIT 1;';
-const SQL_MINIMUM_TEMPERATURE = 'SELECT * FROM raw WHERE temp = (SELECT MIN(temp) FROM raw);';
-const SQL_MAXIMUM_TEMPERATURE = 'SELECT * FROM raw WHERE temp = (SELECT MAX(temp) FROM raw);';
-const SQL_MODE_TEMPERATURE = "SELECT COUNT(*) as compte, temp FROM raw GROUP BY raw.temp ORDER BY compte DESC LIMIT 1;";
+const SQL_LISTE_TEMPERATURE = 'SELECT * FROM brute;';
+const SQL_MOYENNE_TEMPERATURE = 'SELECT * FROM vue ORDER BY ID DESC LIMIT 1;';
+const SQL_MEDIANE_TEMPERATURE = 'SELECT * FROM brute ORDER BY temperature OFFSET ((SELECT count(*) FROM brute) / 2) LIMIT 1;';
+const SQL_MINIMUM_TEMPERATURE = 'SELECT * FROM brute WHERE temperature = (SELECT MIN(temperature) FROM brute);';
+const SQL_MAXIMUM_TEMPERATURE = 'SELECT * FROM brute WHERE temperature = (SELECT MAX(temperature) FROM brute);';
+const SQL_MODE_TEMPERATURE = "SELECT COUNT(*) as compte, temperature FROM brute GROUP BY brute.temperature ORDER BY compte DESC LIMIT 1;";
 /*const SQL_DONNER_ETUDIANT = 'SELECT * FROM etudiant WHERE id=$1;';
 const SQL_AJOUTER_ETUDIANT = 'INSERT INTO etudiant VALUES(DEFAULT, $1, $2, $3, $4, $5);';
 const SQL_SUPPRIMER_ETUDIANT = 'DELETE FROM etudiant WHERE id=$1;'
