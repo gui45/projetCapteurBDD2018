@@ -1,10 +1,12 @@
 package controleur;
 
+import donnees.ParametreDAO;
 import donnees.TemperatureDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import model.Parametre;
 import model.Temperature;
 
 public class Controleur {
@@ -13,6 +15,17 @@ public class Controleur {
 	public Controleur() {
 		temperatureDAO = new TemperatureDAO();
 	}
+
+    public void initialize() {
+        System.out.println("INIT");
+
+        ParametreDAO parametreDAO = new ParametreDAO();
+        Parametre parametre = parametreDAO.rechercherParametre();
+        minParam.setText("" + parametre.getMinParam());
+        maxParam.setText("" + parametre.getMaxParam());
+        nbElement.setText("" + parametre.getNbElement());
+        nbHeure.setText("" + parametre.getNbHeure());
+    }
 
     @FXML
     private Text min;
@@ -63,6 +76,14 @@ public class Controleur {
     private double limitMin;
     private double limitMax;
 
+    @FXML
+    private void modifier(){
+        ParametreDAO parametreDAO = new ParametreDAO();
+
+        // TODO : gets
+
+        parametreDAO.modifierParametre();
+    }
 
     @FXML
     private void actualiser() {
@@ -80,8 +101,6 @@ public class Controleur {
         
         if (estValeursCorrect()) {
             // TODO: Call API, receive data, create TableauDeBord constructor and set Values to Text
-
-
 
             if(boolHeure){
                 derniereHeure.setText("" + heure);
@@ -156,4 +175,5 @@ public class Controleur {
 
         return !boolQuitter;
     }
+
 }

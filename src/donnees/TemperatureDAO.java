@@ -31,7 +31,7 @@ public class TemperatureDAO {
 	public Temperature rechercherTemperature(){
 		try
 		{
-			URL urlListeVaisseau = new URL("http://127.0.0.1/phpBDD/temperature/lire_statistiques.php");
+			URL urlListeVaisseau = new URL("http://127.0.0.1/projet/BDD/projetCapteurBDD2018-apiPhP/php/temperature/lire_statistiques.php");
 			String derniereBalise = "</temperature>";
 			InputStream flux = urlListeVaisseau.openConnection().getInputStream();
 			Scanner lecteur = new Scanner(flux);

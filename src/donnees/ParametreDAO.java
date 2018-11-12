@@ -30,6 +30,9 @@ public class ParametreDAO {
 	public Parametre rechercherParametre(){
 		try
 		{
+
+			// TODO : URL
+
 			URL urlListeParam = new URL("URL A METTRE");
 			String derniereBalise = "</parametres>";
 			InputStream flux = urlListeParam.openConnection().getInputStream();
