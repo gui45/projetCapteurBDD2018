@@ -7,13 +7,14 @@
 	$requete->execute();
     $valeur = $requete->fetch(PDO::FETCH_OBJ);
 
-    echo "
-        <temperature>
-            <minimum>".$valeur->min."</minimum>
-            <maximum>".$valeur->max."</maximum>
-            <moyenne>".$valeur->moyenne."</moyenne>
-            <mode>".$valeur->mod."</mode>
-            <mediane>".$valeur->med."</mediane>
-        </temperature>
-    ";
+    header('Content-Type: application/xml');
+    echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
+
+<temperature>
+    <minimum><?=$valeur->min?></minimum>
+    <maximum><?=$valeur->max?></maximum>
+    <moyenne><?=$valeur->moyenne?></moyenne>
+    <mode><?=$valeur->mod?></mode>
+    <mediane><?=$valeur->med?></mediane>
+</temperature>
