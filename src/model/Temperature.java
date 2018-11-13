@@ -1,85 +1,84 @@
 package model;
 
 public class Temperature {
-	
-	protected int idTemperature;
-	protected float minimum;
-	protected float maximum;
-	protected float moyenne;
-	protected float mode;
-	protected float mediane;
-	
-	
-	public Temperature() {
-		
-		minimum = 0;
-		maximum = 0;
-		moyenne = 0;
-		mode = 0;
-		mediane = 0;
-		
-	}
+
+    protected int idTemperature;
+    protected float minimum;
+    protected float maximum;
+    protected float moyenne;
+    protected float mode;
+    protected float mediane;
 
 
-	public int getIdTemperature() {
-		return idTemperature;
-	}
+    public Temperature() {
+
+        minimum = 0;
+        maximum = 0;
+        moyenne = 0;
+        mode = 0;
+        mediane = 0;
+
+    }
 
 
-	public void setIdTemperature(int idTemperature) {
-		this.idTemperature = idTemperature;
-	}
+    public int getIdTemperature() {
+        return idTemperature;
+    }
 
 
-	public float getMinimum() {
-		return minimum;
-	}
+    public void setIdTemperature(int idTemperature) {
+        this.idTemperature = idTemperature;
+    }
 
 
-	public void setMinimum(float minimum) {
-		this.minimum = minimum;
-	}
+    public float getMinimum() {
+        return minimum;
+    }
 
 
-	public float getMaximum() {
-		return maximum;
-	}
+    public void setMinimum(float minimum) {
+        this.minimum = minimum;
+    }
 
 
-	public void setMaximum(float maximum) {
-		this.maximum = maximum;
-	}
+    public float getMaximum() {
+        return maximum;
+    }
 
 
-	public float getMoyenne() {
-		return moyenne;
-	}
+    public void setMaximum(float maximum) {
+        this.maximum = maximum;
+    }
 
 
-	public void setMoyenne(float moyenne) {
-		this.moyenne = moyenne;
-	}
+    public float getMoyenne() {
+        return moyenne;
+    }
 
 
-	public float getMode() {
-		return mode;
-	}
+    public void setMoyenne(float moyenne) {
+        this.moyenne = moyenne;
+    }
 
 
-	public void setMode(float mode) {
-		this.mode = mode;
-	}
+    public float getMode() {
+        return mode;
+    }
 
 
-	public float getMediane() {
-		return mediane;
-	}
+    public void setMode(float mode) {
+        this.mode = mode;
+    }
 
 
-	public void setMediane(float mediane) {
-		this.mediane = mediane;
-	}
-	
-	
+    public float getMediane() {
+        return mediane;
+    }
+
+
+    public void setMediane(float mediane) {
+        this.mediane = mediane;
+    }
+
 
 }

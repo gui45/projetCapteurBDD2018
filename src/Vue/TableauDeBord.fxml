@@ -61,22 +61,22 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Text fill="#bf378d" layoutX="400.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure :">
+      <Text fill="#bf378d" layoutX="386.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure :">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <Text fill="#bf378d" layoutX="400.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Élément :">
+      <Text fill="#bf378d" layoutX="386.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Élément :">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <Text fill="#bf378d" layoutX="400.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max :">
+      <Text fill="#bf378d" layoutX="386.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supérieur à :">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <Text fill="#bf378d" layoutX="400.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min :">
+      <Text fill="#bf378d" layoutX="386.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inférieur à :">
          <font>
             <Font size="30.0" />
          </font>
@@ -91,12 +91,12 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="minParam" layoutX="532.0" layoutY="302.0" promptText="limite">
+      <TextField fx:id="superieurA" layoutX="570.0" layoutY="302.0" prefHeight="39.0" prefWidth="186.0" promptText="limite">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="maxParam" layoutX="532.0" layoutY="407.0" promptText="limite">
+      <TextField fx:id="inferieurA" layoutX="570.0" layoutY="407.0" prefHeight="39.0" prefWidth="186.0" promptText="limite">
          <font>
             <Font size="18.0" />
          </font>

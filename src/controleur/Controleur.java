@@ -10,21 +10,22 @@ import model.Parametre;
 import model.Temperature;
 
 public class Controleur {
-	protected TemperatureDAO temperatureDAO;
+    protected TemperatureDAO temperatureDAO;
 
-	public Controleur() {
-		temperatureDAO = new TemperatureDAO();
-	}
+    public Controleur() {
+        temperatureDAO = new TemperatureDAO();
+    }
 
     public void initialize() {
-        System.out.println("INIT");
 
         ParametreDAO parametreDAO = new ParametreDAO();
         Parametre parametre = parametreDAO.rechercherParametre();
-        minParam.setText("" + parametre.getMinParam());
-        maxParam.setText("" + parametre.getMaxParam());
+        superieurA.setText("" + parametre.getSuperieurA());
+        inferieurA.setText("" + parametre.getInferieurA());
         nbElement.setText("" + parametre.getNbElement());
         nbHeure.setText("" + parametre.getNbHeure());
+
+        actualiser();
     }
 
     @FXML
@@ -58,10 +59,10 @@ public class Controleur {
     private TextField nbHeure;
 
     @FXML
-    private TextField minParam;
+    private TextField superieurA;
 
     @FXML
-    private TextField maxParam;
+    private TextField inferieurA;
 
     @FXML
     private RadioButton heureChoix;
@@ -70,24 +71,43 @@ public class Controleur {
     private RadioButton elementChoix;
 
     private boolean boolHeure;
-    private boolean boolQuitter = false;
-    private int heure;
-    private int element;
-    private double limitMin;
-    private double limitMax;
 
     @FXML
-    private void modifier(){
-        ParametreDAO parametreDAO = new ParametreDAO();
+    private void modifier() {
 
-        parametreDAO.modifierParametre(heure, element, limitMin, limitMax, boolHeure);
+        try {
+            int heure = Integer.parseInt(nbHeure.getText());
+            int element = Integer.parseInt(nbElement.getText());
+            double superieur = Double.parseDouble(superieurA.getText());
+            double inferieur = Double.parseDouble(inferieurA.getText());
+
+            initChoixSelect();
+            ParametreDAO parametreDAO = new ParametreDAO();
+
+            parametreDAO.modifierParametre(heure, element, superieur, inferieur, boolHeure);
+
+            if (boolHeure) {
+                derniereHeure.setText("" + heure);
+                dernierElement.setText("XXX");
+            } else {
+                derniereHeure.setText("XXX");
+                dernierElement.setText("" + element);
+            }
+            erreur.setVisible(false);
+        } catch (NumberFormatException numberFormatException) {
+            numberFormatException.printStackTrace();
+            erreur.setVisible(true);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            erreur.setVisible(true);
+        }
+
+
     }
 
     @FXML
     private void actualiser() {
 
-        initValeur();
-        initChoixSelect();
         Temperature temperature = temperatureDAO.rechercherTemperature();
 
         moyenne.setText("" + temperature.getMoyenne());
@@ -95,83 +115,10 @@ public class Controleur {
         min.setText("" + temperature.getMinimum());
         max.setText("" + temperature.getMaximum());
         mediane.setText("" + temperature.getMediane());
-        
-        
-        if (estValeursCorrect()) {
-            // TODO: Call API, receive data, create TableauDeBord constructor and set Values to Text
-
-            if(boolHeure){
-                derniereHeure.setText("" + heure);
-                dernierElement.setText("XXX");
-            }
-            else {
-                derniereHeure.setText("XXX");
-                dernierElement.setText("" + element);
-            }
-
-            //TEST:
-            System.out.println(element + " | " + heure + " | " + limitMin + " | " + limitMax);
-        }
-        else{
-            erreur.setVisible(true);
-        }
     }
 
-    private void initValeur(){
-        limitMin = 125.0;
-        limitMax = -40.0;
-        heure = 1;
-        element = 1000;
-        boolQuitter = false;
-        erreur.setVisible(false);
-    }
-
-    private void initChoixSelect(){
-        if (heureChoix.isSelected()) {
-            boolHeure = true;
-        } else {
-            boolHeure = false;
-        }
-    }
-
-    private boolean estValeursCorrect(){
-        try {
-
-            String tempElement = nbElement.getText();
-            String tempHeure = nbHeure.getText();
-            String tempLimiteMin = minParam.getText();
-            String tempLimiteMax = maxParam.getText();
-
-            if (tempLimiteMin.equals("")) {
-                limitMin = 125.0;
-            } else {
-                limitMin = Double.parseDouble(tempLimiteMin);
-            }
-
-            if (tempLimiteMax.equals("")) {
-                limitMax = -40.0;
-            } else {
-                limitMax = Double.parseDouble(tempLimiteMax);
-            }
-
-            if (boolHeure) {
-                if (tempHeure.equals("")) {
-                } else {
-                    heure = Integer.parseInt(tempHeure);
-                }
-            } else {
-                if (tempElement.equals("")) {
-                } else {
-                    element = Integer.parseInt(tempElement);
-                }
-            }
-        } catch (NumberFormatException numberFormatException) {
-            boolQuitter = true;
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-
-        return !boolQuitter;
+    private void initChoixSelect() {
+        boolHeure = heureChoix.isSelected();
     }
 
 }
