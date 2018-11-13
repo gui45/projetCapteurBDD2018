@@ -20,7 +20,7 @@ chemin_fichier = "./data.txt"
 ### FONCTIONS ###
 async def envoyerValeurEnBDD(valeur):
     curseur.execute(
-        "INSERT INTO raw(temp, timestamp) VALUES(%s, %s);", (valeur, datetime.datetime.utcnow()))
+        "INSERT INTO brute(temperature, timestamp) VALUES(%s, %s);", (valeur, datetime.datetime.utcnow()))
     maConnection.commit()
 
 def fermerConnexion():
