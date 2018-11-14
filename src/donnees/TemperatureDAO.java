@@ -56,7 +56,8 @@ public class TemperatureDAO {
                 String maximum = noeudTemperature.getElementsByTagName("maximum").item(0).getTextContent();
                 temperature.setMaximum(Float.valueOf(maximum));
                 String moyenne = noeudTemperature.getElementsByTagName("moyenne").item(0).getTextContent();
-                temperature.setMoyenne(Float.valueOf(moyenne));
+                
+                temperature.setMoyenne((moyenne != "") ? Float.parseFloat(moyenne) : 999999);
                 String mode = noeudTemperature.getElementsByTagName("mode").item(0).getTextContent();
                 temperature.setMode(Float.valueOf(mode));
                 String mediane = noeudTemperature.getElementsByTagName("mediane").item(0).getTextContent();

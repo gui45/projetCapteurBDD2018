@@ -118,8 +118,7 @@ public class Controleur {
     private void actualiser() {
 
         Temperature temperature = temperatureDAO.rechercherTemperature();
-
-        moyenne.setText("" + temperature.getMoyenne());
+        moyenne.setText((temperature.getMoyenne() != 999999) ? "" + temperature.getMoyenne() : "Valeur erronée");
         mode.setText("" + temperature.getMode());
         min.setText("" + temperature.getMinimum());
         max.setText("" + temperature.getMaximum());
