@@ -2,9 +2,17 @@ package donnees;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.StringBufferInputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -27,15 +35,73 @@ public class ParametreDAO {
 
 	public void modifierParametre(int heure, int element, double limitMin, double limitMax, boolean boolHeure){
 
-		// TODO : POST XML POUR API
+		if(boolHeure){
+			try {
+				URL url = new URL("http://54.39.144.87/apiCapture/parametre/modifier.php");
+				URLConnection con = url.openConnection();
+				HttpURLConnection http = (HttpURLConnection)con;
+				http.setRequestMethod("POST");
+				http.setDoOutput(true);
+
+				Map<String,String> arguments = new HashMap<>();
+				arguments.put("heures", "" + heure);
+				arguments.put("superieur_a", "" + limitMin);
+				arguments.put("inferieur_a", "" + limitMax);
+
+				StringJoiner sj = new StringJoiner("&");
+				for(Map.Entry<String,String> entree: arguments.entrySet())
+					sj.add(URLEncoder.encode(entree.getKey(),"UTF-8") + "="
+							+ URLEncoder.encode(entree.getValue(), "UTF-8"));
+				byte[] sortie = sj.toString().getBytes(StandardCharsets.UTF_8);
+				int longueur = sortie.length;
+
+				http.setFixedLengthStreamingMode(longueur);
+				http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+				http.connect();
+				try(OutputStream flux = http.getOutputStream()){
+					flux.write(sortie);
+				}
+
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+		else {
+			try {
+				URL url = new URL("http://54.39.144.87/apiCapture/parametre/modifier.php");
+				URLConnection con = url.openConnection();
+				HttpURLConnection http = (HttpURLConnection)con;
+				http.setRequestMethod("POST");
+				http.setDoOutput(true);
+
+				Map<String,String> arguments = new HashMap<>();
+				arguments.put("quantite_entree", "" + element);
+				arguments.put("superieur_a", "" + limitMin);
+				arguments.put("inferieur_a", "" + limitMax);
+
+				StringJoiner sj = new StringJoiner("&");
+				for(Map.Entry<String,String> entree: arguments.entrySet())
+					sj.add(URLEncoder.encode(entree.getKey(),"UTF-8") + "="
+							+ URLEncoder.encode(entree.getValue(), "UTF-8"));
+				byte[] sortie = sj.toString().getBytes(StandardCharsets.UTF_8);
+				int longueur = sortie.length;
+
+				http.setFixedLengthStreamingMode(longueur);
+				http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+				http.connect();
+				try(OutputStream flux = http.getOutputStream()){
+					flux.write(sortie);
+				}
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+		}
 
 	}
 
 	public Parametre rechercherParametre(){
 		try
 		{
-
-			// TODO : URL
 
 			URL urlListeParam = new URL("http://54.39.144.87/apiCapture/parametre/lire_parametre.php");
 			String derniereBalise = "</parametres>";
