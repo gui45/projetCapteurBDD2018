@@ -38,6 +38,7 @@ public class ParametreDAO {
 	public void modifierParametre(int heure, int element, double superieurA, double inferieurA, boolean boolHeure){
 
 		if(inferieurA>superieurA){
+			System.out.println("CONDITION ON");
 			if(boolHeure){
 				if(heure > 0){
 					try {
@@ -62,19 +63,17 @@ public class ParametreDAO {
 						http.setFixedLengthStreamingMode(longueur);
 						http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 						http.connect();
-						controleur.getErreur().setVisible(false);
 						try(OutputStream flux = http.getOutputStream()){
 							flux.write(sortie);
 						}
 
 					}catch (Exception e){
 						e.printStackTrace();
-						controleur.getErreur().setVisible(true);
 					}
 				}
 			}
 			else {
-				if(element > 0){
+				if(element > 1){
 					try {
 						URL url = new URL("http://54.39.144.87/apiCapture/parametre/modifier.php");
 						URLConnection con = url.openConnection();
@@ -97,19 +96,14 @@ public class ParametreDAO {
 						http.setFixedLengthStreamingMode(longueur);
 						http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 						http.connect();
-						controleur.getErreur().setVisible(false);
 						try(OutputStream flux = http.getOutputStream()){
 							flux.write(sortie);
 						}
 					}catch (Exception e){
 						e.printStackTrace();
-						controleur.getErreur().setVisible(true);
 					}
 				}
 			}
-		}
-		else {
-			controleur.getErreur().setVisible(true);
 		}
 	}
 
