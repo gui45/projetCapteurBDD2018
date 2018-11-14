@@ -1,0 +1,8 @@
+RewriteEngine on
+
+RewriteRule ^temperature$ php/statistique/lire_statistiques.php [QSA]
+RewriteRule ^temperature/([A-Za-z0-9]+)$ php/statistique/$1.php [QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . php/erreur/404.php
