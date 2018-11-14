@@ -18,6 +18,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import controleur.Controleur;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -28,75 +29,88 @@ import model.Parametre;
 public class ParametreDAO {
 
 	String xml = null;
+	Controleur controleur = Controleur.getInstance();
 
 	public ParametreDAO() {
 
 	}
 
-	public void modifierParametre(int heure, int element, double limitMin, double limitMax, boolean boolHeure){
+	public void modifierParametre(int heure, int element, double superieurA, double inferieurA, boolean boolHeure){
 
-		if(boolHeure){
-			try {
-				URL url = new URL("http://54.39.144.87/apiCapture/parametre/modifier.php");
-				URLConnection con = url.openConnection();
-				HttpURLConnection http = (HttpURLConnection)con;
-				http.setRequestMethod("POST");
-				http.setDoOutput(true);
+		if(inferieurA>superieurA){
+			if(boolHeure){
+				if(heure > 0){
+					try {
+						URL url = new URL("http://54.39.144.87/apiCapture/parametre/modifier.php");
+						URLConnection con = url.openConnection();
+						HttpURLConnection http = (HttpURLConnection)con;
+						http.setRequestMethod("POST");
+						http.setDoOutput(true);
 
-				Map<String,String> arguments = new HashMap<>();
-				arguments.put("heures", "" + heure);
-				arguments.put("superieur_a", "" + limitMin);
-				arguments.put("inferieur_a", "" + limitMax);
+						Map<String,String> arguments = new HashMap<>();
+						arguments.put("heures", "" + heure);
+						arguments.put("superieur_a", "" + superieurA);
+						arguments.put("inferieur_a", "" + inferieurA);
 
-				StringJoiner sj = new StringJoiner("&");
-				for(Map.Entry<String,String> entree: arguments.entrySet())
-					sj.add(URLEncoder.encode(entree.getKey(),"UTF-8") + "="
-							+ URLEncoder.encode(entree.getValue(), "UTF-8"));
-				byte[] sortie = sj.toString().getBytes(StandardCharsets.UTF_8);
-				int longueur = sortie.length;
+						StringJoiner sj = new StringJoiner("&");
+						for(Map.Entry<String,String> entree: arguments.entrySet())
+							sj.add(URLEncoder.encode(entree.getKey(),"UTF-8") + "="
+									+ URLEncoder.encode(entree.getValue(), "UTF-8"));
+						byte[] sortie = sj.toString().getBytes(StandardCharsets.UTF_8);
+						int longueur = sortie.length;
 
-				http.setFixedLengthStreamingMode(longueur);
-				http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-				http.connect();
-				try(OutputStream flux = http.getOutputStream()){
-					flux.write(sortie);
+						http.setFixedLengthStreamingMode(longueur);
+						http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+						http.connect();
+						controleur.getErreur().setVisible(false);
+						try(OutputStream flux = http.getOutputStream()){
+							flux.write(sortie);
+						}
+
+					}catch (Exception e){
+						e.printStackTrace();
+						controleur.getErreur().setVisible(true);
+					}
 				}
+			}
+			else {
+				if(element > 0){
+					try {
+						URL url = new URL("http://54.39.144.87/apiCapture/parametre/modifier.php");
+						URLConnection con = url.openConnection();
+						HttpURLConnection http = (HttpURLConnection)con;
+						http.setRequestMethod("POST");
+						http.setDoOutput(true);
 
-			}catch (Exception e){
-				e.printStackTrace();
+						Map<String,String> arguments = new HashMap<>();
+						arguments.put("quantite_entree", "" + element);
+						arguments.put("superieur_a", "" + superieurA);
+						arguments.put("inferieur_a", "" + inferieurA);
+
+						StringJoiner sj = new StringJoiner("&");
+						for(Map.Entry<String,String> entree: arguments.entrySet())
+							sj.add(URLEncoder.encode(entree.getKey(),"UTF-8") + "="
+									+ URLEncoder.encode(entree.getValue(), "UTF-8"));
+						byte[] sortie = sj.toString().getBytes(StandardCharsets.UTF_8);
+						int longueur = sortie.length;
+
+						http.setFixedLengthStreamingMode(longueur);
+						http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+						http.connect();
+						controleur.getErreur().setVisible(false);
+						try(OutputStream flux = http.getOutputStream()){
+							flux.write(sortie);
+						}
+					}catch (Exception e){
+						e.printStackTrace();
+						controleur.getErreur().setVisible(true);
+					}
+				}
 			}
 		}
 		else {
-			try {
-				URL url = new URL("http://54.39.144.87/apiCapture/parametre/modifier.php");
-				URLConnection con = url.openConnection();
-				HttpURLConnection http = (HttpURLConnection)con;
-				http.setRequestMethod("POST");
-				http.setDoOutput(true);
-
-				Map<String,String> arguments = new HashMap<>();
-				arguments.put("quantite_entree", "" + element);
-				arguments.put("superieur_a", "" + limitMin);
-				arguments.put("inferieur_a", "" + limitMax);
-
-				StringJoiner sj = new StringJoiner("&");
-				for(Map.Entry<String,String> entree: arguments.entrySet())
-					sj.add(URLEncoder.encode(entree.getKey(),"UTF-8") + "="
-							+ URLEncoder.encode(entree.getValue(), "UTF-8"));
-				byte[] sortie = sj.toString().getBytes(StandardCharsets.UTF_8);
-				int longueur = sortie.length;
-
-				http.setFixedLengthStreamingMode(longueur);
-				http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-				http.connect();
-				try(OutputStream flux = http.getOutputStream()){
-					flux.write(sortie);
-				}
-			}catch (Exception e){
-				e.printStackTrace();
-			}
+			controleur.getErreur().setVisible(true);
 		}
-
 	}
 
 	public Parametre rechercherParametre(){

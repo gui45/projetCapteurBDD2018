@@ -101,7 +101,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <RadioButton fx:id="heureChoix" layoutX="392.0" layoutY="529.0" mnemonicParsing="false" selected="true" text="Heure" textFill="#bf378d">
+      <RadioButton fx:id="heureChoix" layoutX="392.0" layoutY="529.0" mnemonicParsing="false" text="Heure" textFill="#bf378d">
          <toggleGroup>
             <ToggleGroup fx:id="group" />
          </toggleGroup>
@@ -109,7 +109,7 @@
             <Font size="30.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="sauvegardeChoix" layoutX="564.0" layoutY="529.0" mnemonicParsing="false" text="Element" textFill="#bf378d" toggleGroup="$group">
+      <RadioButton fx:id="sauvegardeChoix" layoutX="564.0" layoutY="529.0" mnemonicParsing="false" selected="true" text="Element" textFill="#bf378d" toggleGroup="$group">
          <font>
             <Font size="30.0" />
          </font>

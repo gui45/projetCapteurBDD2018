@@ -12,6 +12,13 @@ import model.Temperature;
 public class Controleur {
     protected TemperatureDAO temperatureDAO;
 
+    private static Controleur INSTANCE = new Controleur();
+
+    /** Point d'accès pour l'instance unique du singleton */
+    public static Controleur getInstance()
+    {   return INSTANCE;
+    }
+
     public Controleur() {
         temperatureDAO = new TemperatureDAO();
     }
@@ -123,4 +130,7 @@ public class Controleur {
         boolHeure = heureChoix.isSelected();
     }
 
+    public Text getErreur() {
+        return erreur;
+    }
 }
