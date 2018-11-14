@@ -102,6 +102,8 @@ public class Controleur {
             erreur.setVisible(true);
         }
 
+        actualiser();
+
 
     }
 
