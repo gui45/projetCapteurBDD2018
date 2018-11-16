@@ -18,7 +18,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import controleur.Controleur;
+import controleur.ControleurPrincipal;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -29,7 +29,7 @@ import model.Parametre;
 public class ParametreDAO {
 
 	String xml = null;
-	Controleur controleur = Controleur.getInstance();
+	ControleurPrincipal controleurPrincipal = ControleurPrincipal.getInstance();
 
 	public ParametreDAO() {
 
@@ -69,11 +69,12 @@ public class ParametreDAO {
 
 					}catch (Exception e){
 						e.printStackTrace();
+						System.out.println("NON");
 					}
 				}
 			}
 			else {
-				if(element > 1){
+				if(element > 2){
 					try {
 						URL url = new URL("http://54.39.144.87/apiCapture/parametre/modifier.php");
 						URLConnection con = url.openConnection();
@@ -101,6 +102,7 @@ public class ParametreDAO {
 						}
 					}catch (Exception e){
 						e.printStackTrace();
+						System.out.println("NON");
 					}
 				}
 			}

@@ -9,24 +9,18 @@ import javafx.scene.text.Text;
 import model.Parametre;
 import model.Temperature;
 
-public class Controleur {
+public class ControleurVueTableauDeBord {
     protected TemperatureDAO temperatureDAO;
+    private ControleurPrincipal controleurPrincipal = ControleurPrincipal.getInstance();
 
-    private static Controleur INSTANCE = new Controleur();
-
-    /** Point d'accÃ¨s pour l'instance unique du singleton */
-    public static Controleur getInstance()
-    {   return INSTANCE;
-    }
-
-    public Controleur() {
+    public ControleurVueTableauDeBord() {
         temperatureDAO = new TemperatureDAO();
     }
 
     public void initialize() {
 
-        ParametreDAO parametreDAO = new ParametreDAO();
-        Parametre parametre = parametreDAO.rechercherParametre();
+        Parametre parametre = controleurPrincipal.rechercherParametre();
+
         superieurA.setText("" + parametre.getSuperieurA());
         inferieurA.setText("" + parametre.getInferieurA());
         nbElement.setText("" + parametre.getNbElement());
@@ -87,11 +81,9 @@ public class Controleur {
             int element = Integer.parseInt(nbElement.getText());
             double superieur = Double.parseDouble(superieurA.getText());
             double inferieur = Double.parseDouble(inferieurA.getText());
-
             initChoixSelect();
-            ParametreDAO parametreDAO = new ParametreDAO();
 
-            parametreDAO.modifierParametre(heure, element, superieur, inferieur, boolHeure);
+            controleurPrincipal.modifierParametre(heure, element, superieur,inferieur,boolHeure);
 
             if (boolHeure) {
                 derniereHeure.setText("" + heure);
@@ -117,8 +109,9 @@ public class Controleur {
     @FXML
     private void actualiser() {
 
-        Temperature temperature = temperatureDAO.rechercherTemperature();
-        moyenne.setText((temperature.getMoyenne() != 999999) ? "" + temperature.getMoyenne() : "Valeur erronée");
+        Temperature temperature = controleurPrincipal.rechercherTemperature();
+
+        moyenne.setText((temperature.getMoyenne() != 999999) ? "" + temperature.getMoyenne() : "Valeur erronï¿½e");
         mode.setText("" + temperature.getMode());
         min.setText("" + temperature.getMinimum());
         max.setText("" + temperature.getMaximum());

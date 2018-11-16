@@ -1,5 +1,6 @@
 package application;
 
+import controleur.ControleurPrincipal;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +11,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        ControleurPrincipal controleurPrincipal = ControleurPrincipal.getInstance();
+
         Parent root = FXMLLoader.load(getClass().getResource("../Vue/TableauDeBord.fxml"));
         primaryStage.setTitle("TableauDeBord");
         primaryStage.setScene(new Scene(root, 800, 800));
