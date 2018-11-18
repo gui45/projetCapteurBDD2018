@@ -111,11 +111,11 @@ public class ControleurVueTableauDeBord {
 
         Temperature temperature = controleurPrincipal.rechercherTemperature();
 
-        moyenne.setText((temperature.getMoyenne() != 999999) ? "" + temperature.getMoyenne() : "Valeur erronï¿½e");
-        mode.setText("" + temperature.getMode());
-        min.setText("" + temperature.getMinimum());
-        max.setText("" + temperature.getMaximum());
-        mediane.setText("" + temperature.getMediane());
+        moyenne.setText((temperature.getMoyenne() != 999999) ? "" + temperature.getMoyenne() : "Valeur erronée");
+        mode.setText((temperature.getMode() != 999999) ? "" + temperature.getMode() : "Valeur erronée");
+        min.setText((temperature.getMinimum() != 999999) ? "" + temperature.getMinimum() : "Valeur erronée");
+        max.setText((temperature.getMaximum() != 999999) ? "" + temperature.getMaximum() : "Valeur erronée");
+        mediane.setText((temperature.getMediane() != 999999) ? "" + temperature.getMediane() : "Valeur erronée");
     }
 
     private void initChoixSelect() {

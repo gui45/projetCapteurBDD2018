@@ -52,17 +52,15 @@ public class TemperatureDAO {
                 Temperature temperature = new Temperature();
                 Element noeudTemperature = (Element) listeNoeudsTemperature.item(position);
                 String minimum = noeudTemperature.getElementsByTagName("minimum").item(0).getTextContent();
-                temperature.setMinimum(Float.valueOf(minimum));
+                temperature.setMinimum((minimum != "") ? Float.parseFloat(minimum) : 999999);
                 String maximum = noeudTemperature.getElementsByTagName("maximum").item(0).getTextContent();
-                temperature.setMaximum(Float.valueOf(maximum));
+                temperature.setMaximum((maximum != "") ? Float.parseFloat(maximum) : 999999);
                 String moyenne = noeudTemperature.getElementsByTagName("moyenne").item(0).getTextContent();
-                
                 temperature.setMoyenne((moyenne != "") ? Float.parseFloat(moyenne) : 999999);
                 String mode = noeudTemperature.getElementsByTagName("mode").item(0).getTextContent();
-                temperature.setMode(Float.valueOf(mode));
+                temperature.setMode((mode != "") ? Float.parseFloat(mode) : 999999);
                 String mediane = noeudTemperature.getElementsByTagName("mediane").item(0).getTextContent();
-                temperature.setMediane(Float.valueOf(mediane));
-
+                temperature.setMediane((mediane != "") ? Float.parseFloat(mediane) : 999999);
                 return temperature;
             }
 
