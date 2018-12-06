@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControleurVueTableauDeBord">
+   <children>
+      <Text fill="#bf378d" layoutX="21.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TABLEAU DE BORD">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="13.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min :">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="12.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max :">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="13.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Moyenne :">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="12.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mode :">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="10.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mediane :">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="13.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dernière(s)">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="14.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="heure(s)">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="13.0" layoutY="657.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dernier(s)">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="13.0" layoutY="690.0" strokeType="OUTSIDE" strokeWidth="0.0" text="élément(s)">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="386.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure :">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="386.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Élément :">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="386.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supérieur à :">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#bf378d" layoutX="386.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inférieur à :">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <TextField fx:id="nbHeure" layoutX="532.0" layoutY="118.0" promptText="nombre d'heure">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="nbElement" layoutX="580.0" layoutY="205.0" prefHeight="39.0" prefWidth="176.0" promptText="Sauvegarde">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="superieurA" layoutX="570.0" layoutY="302.0" prefHeight="39.0" prefWidth="186.0" promptText="limite">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="inferieurA" layoutX="570.0" layoutY="407.0" prefHeight="39.0" prefWidth="186.0" promptText="limite">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <RadioButton fx:id="heureChoix" layoutX="392.0" layoutY="529.0" mnemonicParsing="false" text="Heure" textFill="#bf378d">
+         <toggleGroup>
+            <ToggleGroup fx:id="group" />
+         </toggleGroup>
+         <font>
+            <Font size="30.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="sauvegardeChoix" layoutX="564.0" layoutY="529.0" mnemonicParsing="false" selected="true" text="Element" textFill="#bf378d" toggleGroup="$group">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </RadioButton>
+      <Button layoutX="496.0" layoutY="16.0" mnemonicParsing="false" onAction="#actualiser" text="Actualiser">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Text fx:id="erreur" fill="RED" layoutX="450.0" layoutY="727.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erreur de syntaxe" visible="false">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Separator layoutX="373.0" layoutY="100.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="19.0" />
+      <Separator layoutX="394.0" layoutY="-306.0" orientation="VERTICAL" prefHeight="813.0" prefWidth="12.0" rotate="90.0" />
+      <Text fx:id="min" fill="#bf378d" layoutX="106.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="251.8271484375">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="max" fill="#bf378d" layoutX="106.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="263.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="moyenne" fill="#bf378d" layoutX="171.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="202.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="mode" fill="#bf378d" layoutX="131.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="202.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="mediane" fill="#bf378d" layoutX="156.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="202.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="derniereHeure" fill="#bf378d" layoutX="164.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="146.720703125">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="dernierElement" fill="#bf378d" layoutX="171.0" layoutY="658.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="146.720703125">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Button layoutX="504.0" layoutY="612.0" mnemonicParsing="false" onAction="#modifier" text="Modifier">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
