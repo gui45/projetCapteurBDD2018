@@ -1,4 +1,7 @@
 const temperatureDAO = require('./temperatureDAO');
+const BruteDAOMongo = require ('./BruteDAOMongo');
+
+bruteDAOMongo = new BruteDAOMongo();
 const http = require('http');
 
 var serveur = http.createServer(
@@ -8,7 +11,8 @@ var serveur = http.createServer(
         {
             if(requete.url === '/temperature/liste' || requete.url === '/temperature/liste/')
             {
-                const temperature = await temperatureDAO.listerTemperatures();
+                //const temperature = await temperatureDAO.listerTemperatures();
+                const temperature = await bruteDAOMongo.listerTemprature();
                 reponse.end(JSON.stringify(temperature));
             }
             else if(requete.url === '/temperature/moyenne' || requete.url === '/temperature/moyenne/')
